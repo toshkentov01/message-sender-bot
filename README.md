@@ -25,8 +25,8 @@ HOW TO USE:
 
         Second API is sends messages periodically (each 5 second) and will never finish its work
 
-
-
     !!! WARNING !!!
     AFTER CLONNING A message-sender-bot PROJECT, PLEASE OPEN api_gateway IN ONE EDITOR (vscode, goland ...) 
     AND message_service IN ANOTHER EDITOR.
+
+    DON'T FORGET TO SETTING AN .ENV FILE
