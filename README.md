@@ -16,3 +16,11 @@ HOW TO USE:
     4. Then in .env file also set your channel's username
 
     5. Then run the program
+
+    -------------------------------------------------------------------------------------
+
+    6. There are two APIs:
+
+        First API sends messages and returns status ok, if there will not be an error
+        
+        Second API is sends messages periodically (each 5 second) and will never finish its work
