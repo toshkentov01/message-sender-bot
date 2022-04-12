@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package message;
+
+option go_package = "genproto/message_service";
+
+service MessageService {
+    rpc SendMessage(Empty) returns (Empty) {};
+}
+
+message SendMessageRequest {
+    string telegram_apitoken = 1;
+    string target_username = 2;
+}
+
+message Message {
+    string id = 1;
+    string content = 2;
+    string priority = 3;
+}
+
+message Messages {
+    repeated Message results = 1;
+}
+
+message Empty {}
