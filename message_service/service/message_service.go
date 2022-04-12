@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"strings"
 
 	l "github.com/toshkentov01/message-sender-bot/message_service/pkg/logger"
 	"github.com/toshkentov01/message-sender-bot/message_service/storage"
@@ -29,8 +30,14 @@ func NewMessageService(log l.Logger) *MessageService {
 func (ms *MessageService) SendMessage(ctx context.Context, request *pb.Empty) (*pb.Empty, error) {
 	result, err := ms.storage.Message().SendMessage(request)
 	if err != nil {
-		ms.logger.Error("Error while sending a message, error: "+err.Error())
-		return nil, status.Error(codes.Internal, "Internal Server Error")
+		if strings.Contains(err.Error(), "Bad Request") {
+			return nil, status.Error(codes.InvalidArgument, "Invalid Argument")
+		
+		} else {
+			ms.logger.Error("Error while sending a message, error: "+err.Error())
+			return nil, status.Error(codes.Internal, "Internal Server Error")
+		}
+
 	}
 
 	return result, nil
