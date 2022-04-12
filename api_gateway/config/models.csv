@@ -1,0 +1,5 @@
+p, any, /swagger/*, GET
+g, unauthorized, any
+
+p, unauthorized, /api/v1/message/send/, POST
+p, unauthorized, /api/v1/message/send-periodically/, POST
